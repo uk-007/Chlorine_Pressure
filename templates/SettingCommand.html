@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Mega Worker DashBoard</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    {% load static %}
+    <link href="{% static 'assets/img/favicon.png' %}"rel="icon">
+    {% load static %}
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+        <!-- Template Main CSS File -->
+    {% load static %}
+    <link rel="stylesheet"  href="{% static 'assets/css/style.css' %}">
+    {% comment %} {% load static %}
+    <link rel="stylesheet"  href="{% static 'assets/css/bootstrap.min.css' %}"> {% endcomment %}
+
+    <!-- Vendor CSS Files -->
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/aos/aos.css' %}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/glightbox/css/glightbox.min.css '%}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/remixicon/remixicon.css '%}">
+    {% load static %}
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css '%}" rel="stylesheet">
+
+    {% load static %}
+    <link href="{% static 'dist/apexcharts.css'%}" rel="stylesheet">
+<style>
+    .btn-outline-success{
+width:350px;
+
+    }
+</style>
+</head>
+<body>
+    <div class="main my">
+        <div class="row my">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-12">
+                                <h3>DEVICE SETTING</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" id="DivBtn">
+                           <div class="col-md-4 mt-2"> 
+                            {% load static %}
+                                <button class="btn btn-outline-success" type="button" onclick="Open_modal(1)"> 
+                                     {% comment %} <i class="fa-solid fa-lock"></i>  {% endcomment %}
+                                    <img src="static/images/plock.png" alt="">  Password</button>
+                            </div>
+                            <div class="col-md-4 mt-2"> 
+                            
+                                <button class="btn btn-outline-success" type="button" onclick="Open_modal(2)">
+                                    {% comment %} <i class="fa-solid fa-stopwatch-20"></i>  {% endcomment %}
+                                    <img src="static/images/capture.png" alt=""> Data Capture Interval Setting</button>
+
+                            </div>
+                           <div class="col-md-4 mt-2"> 
+                            
+                                <button class="btn btn-outline-success" type="button" onclick="Open_modal(3)">
+                                    {% comment %} <i class="fa-solid fa-link"></i> {% endcomment %}
+                                    <img src="static/images/icons8-computer.gif" alt="">  IP / URL Setting</button>
+
+                            </div>
+                            {% comment %} <div class="col-md-4 mt-2"> 
+                                {% load static %}
+                                    <button class="btn btn-outline-success" type="button" onclick="Open_modal(18)">
+                                        {% comment %} <i class="fa-solid fa-link"></i> {% endcomment %}
+                                        {% comment %} <img src="static/images/wifi.png" alt="">  TCP URL Setting</button>
+    
+                                </div> {% endcomment %} 
+                            <div class="col-md-4 mt-2"> 
+                                <button class="btn btn-outline-success" type="button" onclick="Open_modal(4)">
+                                    {% comment %} <i class="fa-solid fa-gear"></i>  {% endcomment %}
+                                    <img src="static/images/icons8-delivery-time.gif" alt=""> RTC Setting</button>
+
+
+                            </div>
+                            <div class="col-md-4 mt-2"> 
+                                
+                                <button class="btn btn-outline-success" type="button" onclick="Open_modal(5)">
+                                    {% comment %} <i class="fa-solid fa-mobile"></i>  {% endcomment %}
+                                    <img src="static/images/number.png" alt=""> Mobile Number Registering </button>
+
+                            </div>
+                            <div class="col-md-4 mt-2"> 
+                                <button class="btn btn-outline-success btn_style"type="button" onclick="Open_modal(16)" >
+                                    {% comment %} <i class="fa-solid fa-pen-to-square"></i>  {% endcomment %}
+                                    <img src="static/images/frequency.png" alt="">Pressure  Data frequency set</button>
+                            
+                            </div>
+                            
+                            <div class="col-md-4 mt-2"> 
+                                <button class="btn btn-outline-success btn_style" type="button" onclick="Open_modal(17)" >
+                                    {% comment %} <i class="fa-solid fa-pen-to-square"></i>  {% endcomment %}
+                                    <img src="static/images/frequency.png" alt="">chlorine Data frequency set</button>
+                            
+                            </div>
+                            <div class="col-md-4 mt-2"> 
+                                <button class="btn btn-outline-success"type="button" onclick="Open_modal(12)" >
+                                    {% comment %} <i class="fa-solid fa-pen-to-square"></i> {% endcomment %}
+                                    <img src="static/images/frequency.png" alt="">Pressure and chlorine frequency set</button>
+
+                            </div>
+
+                            <div class="col-md-4 mt-2"> 
+                                <button class="btn btn-outline-success" type="button" onclick="Open_modal(13)" >
+                                    {% comment %} <i class="fa-solid fa-pen-to-square"></i>  {% endcomment %}
+                                    <img src="static/images/Pressure.png" alt="">Max and min pressure limit set</button>
+
+                            </div>
+                            <div class="col-md-4 mt-2"> 
+                                    
+                                <button class="btn btn-outline-success" type="button" onclick="Open_modal(6)" >
+                                        {% comment %} <i class="fa-solid fa-print"></i>  {% endcomment %}
+                                <img src="static/images/icons8-print.gif" alt="">   Print All Data on Serial Terminal /  Thermal  Printer Setting</button>
+
+                            </div>
+                            <div class="col-md-4 mt-2"> 
+                                
+                                <button class="btn btn-outline-success"type="button" onclick="Open_modal(11)" > 
+                                    {% comment %} <i class="fa-solid fa-database"></i> {% endcomment %}
+                                <img src="static/images/receivingd.gif" alt=""> Receiving Instant Data</button>
+                            </div>
+                           
+                                <div class="col-md-4 mt-2">
+                                    
+                                <button class="btn btn-outline-success" type="button" onclick="Open_modal(8)" >
+                                        {% comment %} <i class="fa-solid fa-trash-can"></i>  {% endcomment %}
+                                <img src="static/images/icons8-delete.gif" alt="">Memory Format (Delete Settings Data)</button>
+
+                            </div>
+
+                            <div class="col-md-4 mt-2"> 
+                                
+                                  <button class="btn btn-outline-success" type="button" onclick="Open_modal(9)" > 
+                                    {% comment %} <i class="fa-solid fa-trash"></i>  {% endcomment %}
+                                    <img src="static/images/icons8-delete.gif" alt="">Memory Format (Delete Saved Device Data)</button>
+
+                            </div>
+
+                            
+                            <div class="col-md-4 mt-2"> 
+                                
+                                  <button class="btn btn-outline-success" type="button" onclick="Open_modal(10)" >
+                                    {% comment %} <i class="fa-solid fa-print"></i>  {% endcomment %}
+                                    <img src="static/images/icons8-print.gif" alt=""> Printing Hardware settings </button>
+
+                            </div>
+
+                            <div class="col-md-4 mt-2"> 
+                                    {% load static %}
+                                <button class="btn btn-outline-success" type="button" onclick="Open_modal(7)"> 
+                                        {% comment %} <i class="fa-solid fa-spinner"></i> {% endcomment %}
+                                <img src="static/images/icons8-restart1.gif" alt="">Restart</button>
+
+                            </div>
+
+                            <div class="col-md-4 mt-2"> 
+                                <button class="btn btn-outline-success btn_style" type="button" onclick="Open_modal(14)" > 
+                                    {% comment %} <i class="fa-solid fa-database"></i>  {% endcomment %}
+                                    <img src="static/images/icons8-database-48.png" alt=""> Receiving Batch Mode</button>
+                          
+                            </div>
+
+                            
+    
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  1 Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Setting Command</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="" class="" id="textlabel">Change Password </label>
+                        <div class="row">
+
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="Str_Password" placeholder="Password" autocomplete="off" />
+                            </div>
+                            <div class="col-3">
+                            </div>
+                            <div class="col-3">
+                                <button type="button" class="btn btn-primary mb-3 btn-sm" onclick="Set_Password(1)">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+        <!--  2 Modal -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="">Change Setting Command</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="" class="" id="">Data Capture Interval Setting </label>
+                        <div class="row">
+
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="Str_Interval" placeholder="The time interval goes from 001 to 999 minutes." autocomplete="off" />
+                            </div>
+                            <div class="col-3">
+                              
+                            </div>
+                            <div class="col-3">
+                                <button type="button" class="btn btn-primary mb-3 btn-sm" onclick="Set_Data_Capture_Interval_Setting(2)">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+                <!--  3 Modal -->
+                <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="">Change Setting Command</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="" class="" id="">Http URL Setting</label>
+                                <div class="row">
+               
+                                    <div class="col-4">
+                                         <select class="form-select input-sm js-example-basic-single" id="TypeURL" onchange="Change_IP_Type()">
+                                            <option value="HTTP" selected>HTTP &nbsp;</option>
+                                            <option value="TCP">TCP &nbsp;</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        {% comment %} <%-- onkeypress="return isvaliedIPinput(event)" --%> {% endcomment %}
+                                        <input type="text" class="form-control" id="Str_URL1"  onkeyup="return isValid_IP(this)"  placeholder="Enter IP" autocomplete="off" />
+                                        {% comment %} <%--<input type="text" class="form-control" id="Str_URL1"   onkeyup="return isValid_IP(this)"  placeholder="Enter IP" autocomplete="off" />--%> {% endcomment %}
+                                     <small id="mes_isValid_IP"></small>
+                                    </div>
+                                    <div class="col-4" id="Port_Div">
+                                        <input type="text" class="form-control" id="Str_URL2"  onkeypress="return isvalied_Number(event)"  onkeyup="return isValid_PortNumber(this)"  placeholder="Enter Port Number" autocomplete="off" />                              
+                                          <small id="mes_isValid_portNumber"></small>
+                                        
+                                        </div>
+                                    <div class="col-4">
+                                        <button type="button" id="btn_http_port" class="btn btn-primary mb-3 btn-sm" onclick="Set_Http_URL_Setting(3)">Send Command &nbsp;  <i class="fa-solid fa-terminal"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+        
+                <!--  4 Modal -->
+        <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="">Change Setting Command</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="" class="" id="">RTC Setting  HH:MM:SS_DD/MM/YY </label>
+                        <div class="row">
+
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="Str_RTC_Setting"  placeholder="HH:MM:SS_DD/MM/YY" required/>
+                            </div>
+                            <div class="col-3">
+                              
+                            </div>
+                            <div class="col-3">
+                                <button type="button" class="btn btn-primary mb-3 btn-sm" onclick="Set_RTC_Setting(4)">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+                <!--  5 Modal -->
+                <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="">Change Setting Command</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="" class="" id="">Mobile Number Registering</label>
+                                <div class="row mt-1">
+              
+                                    <div class="col-4">
+                                        <input type="text" class="form-control" id="Str_Mobile" onkeypress="return isvalied_Mobile(event)"  onkeyup="isvalied_Mobile_Count()"   maxlength="10" placeholder="Enter 10-digit mobile number" required autocomplete="off" />
+                                       <small id="isvalied_Mobile1"></small>
+                                    </div>
+              
+                                    <div class="col-3">
+                                        <select class="form-control " id="Policy">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                     </div>
+                                    <div class="col-3">
+                                       <select class="form-control" id="isactive">
+                                            <option value="A">Active</option>
+                                            <option value="D">DeActivate</option>
+                                           
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="button" id="btnMobile" class="btn btn-primary mb-3 btn-sm" onclick="Set_Mobile_Number_Registering(5)"> Send Command &nbsp;  <i class="fa-solid fa-terminal"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--  12 Modal -->
+        <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="">Change Setting Command</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="" class="" id="">Pressure and chlorine frequency set</label>
+                        <div class="row">
+
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="Str_Pressure"  placeholder="Enter Pressure" required/>
+                            </div>
+                            
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="Str_chlorine"  placeholder="Enter chlorine" required/>
+                            </div>
+                            <div class="col-3">
+                              
+                            </div>
+                            <div class="col-3">
+                                <button type="button" class="btn btn-primary mb-3 btn-sm" onclick="Set_Pressure_and_chlorine_frequency(12)">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+                        <!--  13 Modal -->
+        <div class="modal fade" id="exampleModal13" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="">Change Setting Command</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="" class="" id="">Max and min pressure limit set</label>
+                        <div class="row">
+
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="Str_Max"  placeholder="enter max pressure" required/>
+                            </div>
+                            
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="Str_Min"  placeholder="enter min pressure" required/>
+                            </div>
+                            <div class="col-3">
+                              
+                            </div>
+                            <div class="col-3">
+                                <button type="button" class="btn btn-primary mb-3 btn-sm" onclick="Set_pressure_max_min(13)">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+                <!--  14 Modal -->
+                <div class="modal fade" id="exampleModal16" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="">Change Setting Command</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="" class="" id="">Pressure Data frequency set</label>
+                                <div class="row">
+        
+                                    <div class="col-4">
+                                        <input type="text" class="form-control" id="Str_Pressure1" maxlength="3"  onkeypress="return isvalied_Pressure(event)"    placeholder="Enter Pressure" required/>
+                                    </div>
+                                   
+                                    <div class="col-4">
+                                        <button type="button" id="Str_Pressure1_btn" class="btn btn-primary mb-3 btn-sm" onclick="Set_Pressure_frequency(12)">Send Command &nbsp;  <i class="fa-solid fa-terminal"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+        
+                        <!--  15 Modal -->
+                <div class="modal fade" id="exampleModal17" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="">Change Setting Command</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="" class="" id="">Chlorine Data frequency set</label>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="text" class="form-control" id="Str_chlorine1" maxlength="3" onkeypress="return isvalied_Number(event)" placeholder="Enter chlorine" required/>
+                                    
+                                    </div>
+                                    <div class="col-4">
+                                        <button type="button" id="Str_chlorine_btn1" class="btn btn-primary mb-3 btn-sm" onclick="Set_chlorine_frequency(12)">Send Command &nbsp;  <i class="fa-solid fa-terminal"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+
+
+
+        <!-- Modal -->
+{% comment %} <%--        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="">Change Setting Command</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label style="display: none" id="comm_id1"></label>
+                        <label style="display: none" id="device1"></label>
+                        <label for="" class="" id="textlabel1"></label>
+
+                        <div class="row mt-2">
+
+                            <div class="col-4">
+                                <label for="" class="" id="l1"></label>
+                                <input type="text" class="form-control" id="inputPassword1_1" autocomplete="off" placeholder="">
+                            </div>
+                            <div class="col-4">
+                                <label for="" class="" id="l2"></label>
+                                <input type="text" class="form-control" id="inputPassword1_2" autocomplete="off" placeholder="">
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-primary mb-3 btn-sm" onclick=" SendCommand2()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>--%> {% endcomment %}
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js "></script>
+    
+<script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+<script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-labels@1.1.0/build/chartjs-plugin-labels.min.js"></script>
+
+<script src="static/assets/js/bootstrap.min.js"></script>
+<script src="static/dist/apexcharts.js "></script>
+<script src="static/assets/vendor/aos/aos.js "></script>
+<script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
+<script src="static/assets/vendor/glightbox/js/glightbox.min.js "></script>
+<script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js "></script>
+<script src="static/assets/vendor/swiper/swiper-bundle.min.js "></script>
+<script src="static/assets/vendor/waypoints/noframework.waypoints.js "></script>
+<script src="static/assets/vendor/php-email-form/validate.js "></script>
+<script  src="../Jquery/jquery.multiselect.js"></script>
+<script  src="../Jquery/prettify.js"></script>
+<!-- GMap  JS File -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlXeOYex9U97yKj-1ECwvWRgwHkCF6oO4&callback"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="static/assets/js/main.js "></script>
+<script src="assets/vendors/jquery/jquery-3.7.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" integrity="sha512-siarrzI1u3pCqFG2LEzi87McrBmq6Tp7juVsdmGY1Dr8Saw+ZBAzDzrGwX3vgxX1NkioYNCFOVC0GpDPss10zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% comment %} //window.location.href = "anotherpage.html?siteId=" + siteId; {% endcomment %}
+<script>
+    // Function to get the URL parameter by name
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    // Get the site ID from the URL
+    var Site_id = getParameterByName("Site_id");
+
+    console.log("Site ID: " + Site_id);
+
+
+    $(document).ready(function () {
+        //Get_Site_Device();
+       // $("#DivBtn").hide();
+        var Site_id = getParameterByName("Site_id");
+       // alert(Site_id);
+       
+       var input = document.getElementById('Str_Mobile');
+
+       input.addEventListener('keydown', function (event) {
+           const key = event.key; // const {key} = event; ES6+
+           if (key === "Backspace") {
+
+               if ($('#Str_Mobile').val().length > 9 && $('#Str_Mobile').val().length <11) {
+                   
+                   $("#isvalied_Mobile1").html("Mobile number is Valid");
+                   $('#btnMobile').show();
+                   $("#isvalied_Mobile1").css("color", "green"); // Set background color to green
+               } else {
+                   $("#isvalied_Mobile1").html("Mobile number is Not Valid");
+                   $('#btnMobile').hide();
+                   $("#isvalied_Mobile1").css("color", "red"); // Set background color to red
+
+               }
+               return false;
+           }
+       });
+
+       var input1 = document.getElementById('Str_Pressure');
+       input1.addEventListener('keydown', function (event) {
+           const key = event.key; // const {key} = event; ES6+
+           if (key === "Backspace") {
+               addAndSet();
+               return false;
+           }
+       });
+
+
+       var input2 = document.getElementById('Str_Min');
+       input2.addEventListener('keydown', function (event) {
+           const key = event.key; // const {key} = event; ES6+
+           if (key === "Backspace") {
+               isvalied_minpressure();
+               return false;
+           }
+       });
+       document.getElementById('Str_URL1').addEventListener('keypress', function (evt) {
+            if (!isValidIPInput(evt)) {
+                evt.preventDefault();
+            }
+        });
+    })
+
+// Send Command to database use this function 
+    function SendCommand(comm_id, Site_id, Str1, Str2) {
+        var url = "{% url 'Get_SettingCommand' %}";
+        alert(123456);
+        var comm_id=comm_id;
+        var Site_id = getParameterByName("Site_id");
+        var device=Site_id;
+        var Str1=Str1;
+        var Str2=Str2
+
+        jQuery.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                comm_id: comm_id,
+                device: device,
+                Str1: Str1,
+                Str2: Str2
+            },
+            success: function (data) {
+                console.log(data);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'command send successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            },
+            error: function (data) {
+                alert("fail");
+            }
+        });
+    }
+
+  
+
+// open all Modal to click 
+    function Open_modal(id) {
+        switch (id) {
+            case 1:
+                $('#exampleModal1').modal('show');
+                break;
+            case 2:
+                $('#exampleModal2').modal('show');
+                break;
+            case 3:
+                $('#exampleModal3').modal('show');
+                break;
+            case 4:
+                $('#exampleModal4').modal('show');
+                break;
+            case 5:
+                $('#exampleModal5').modal('show');
+                break;
+            case 12:
+                $('#exampleModal12').modal('show');
+                break;
+            case 13:
+                $('#exampleModal13').modal('show');
+                break;
+            case 16:
+                $('#exampleModal16').modal('show');
+                break;
+            case 17:
+                $('#exampleModal17').modal('show');
+                break;    
+            default:
+                SendCommand(id, Site_id, "NA", "NA");
+        }
+    }
+
+
+    $(function () {
+        setInterval(function () {
+            Set_RCTTime();
+        },1000)
+    })
+    function Set_RCTTime() {
+        // Get the input element by its ID
+        const inputElement = document.getElementById('Str_RTC_Setting');
+        // Set the input value to the current date and time
+        inputElement.value = getCurrentDateTime();
+    }
+    function getCurrentDateTime() {
+    
+        //RTC_R17:00:52_10/05/23-03#
+    
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        const day = now.getDate().toString().padStart(2, '0');
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const year = now.getFullYear().toString().slice(-2);
+        const dayOfWeek = now.getDay().toString();
+    
+        return `${hours}:${minutes}:${seconds}_${day}/${month}/${year}_0${dayOfWeek}`;
+    }
+    
+
+// Set Password 
+    function Set_Password(Comm_id) {
+        var Site_id = getParameterByName("Site_id");
+        alert(Site_id);
+        var Str1 = $('#Str_Password').val();
+        alert(Str1);  
+        if (Str1 == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter Password ',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+        else {
+            SendCommand(Comm_id, Site_id, Str1, "NA");
+        }
+    }
+
+// set and send  Data capture Interval settings
+
+    function Set_Data_Capture_Interval_Setting(Comm_id) {
+        var Site_id =  getParameterByName("Site_id");
+        var Str1 = $('#Str_Interval').val();
+
+        if (Str1 == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter Password ',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+        else {
+            if (isValidDateFormat(Str1)) {
+                SendCommand(Comm_id, Site_id, Str1, "NA");
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Input is not valid. ',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+    
+        }
+    }
+
+    function isValidIPInput(evt) {
+        evt = evt || window.event;
+        var charCode = evt.which || evt.keyCode;
+    
+        if ((charCode >= 48 && charCode <= 57) || charCode === 46) {
+            return true;
+        }
+    
+        return false;
+    }
+
+    function isValid_IP(evt) {
+        //mes_isValid_IP
+        var localhost_ip_pattern = new RegExp("^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+            "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+            "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+            "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
+        if (evt.value == "" || evt.value.length == 0) {
+            $('#mes_isValid_IP').html("Input Required");
+            $("#mes_isValid_IP").css("color", "red");
+            $('#btn_http_port').hide();
+            return false;
+        }
+        else if (localhost_ip_pattern.test(evt.value) == false) {
+            $('#mes_isValid_IP').html("Invalid Local Host IP.");
+            $("#mes_isValid_IP").css("color", "red");
+            $('#btn_http_port').hide();
+            return false;
+        } else {
+            $('#mes_isValid_IP').html("valid Local Host IP.");
+            $("#mes_isValid_IP").css("color", "green");
+            $('#btn_http_port').show();
+            return true;
+        }
+    
+        return false;
+    }
+    
+    function isValid_PortNumber(evt) {
+    
+        if ($('#Str_URL1').val().length != 0) {
+            var server_port_pattern = new RegExp("^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$");
+    
+            //msgShowHide(".");
+            if (evt.value == "" || evt.value.length == 0) {
+                $('#mes_isValid_portNumber').html("Input Required");
+                $("#mes_isValid_portNumber").css("color", "red");
+                $('#btn_http_port').hide();
+                return false;
+            }
+            else if (server_port_pattern.test(evt.value) == false) {
+                $('#mes_isValid_portNumber').html("Invalid Server Port");
+                $("#mes_isValid_portNumber").css("color", "red");
+                $('#btn_http_port').hide();
+                return false;
+            } else {
+                $('#mes_isValid_portNumber').html("valid Server Port.");
+                $("#mes_isValid_portNumber").css("color", "green");
+                $('#btn_http_port').show();
+                return true;
+            }
+        } else {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter IP Adders',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+        return false;
+    }
+
+    function Change_IP_Type() {
+        var Type = $('#TypeURL').val();
+        if (Type == "TCP") {
+            $('#Port_Div').show();
+        } else {
+            $('#Port_Div').hide();
+        }
+    }
+
+
+    {% comment %} function Set_Http_URL_Setting(Comm_id) {
+        var Site_id = getParameterByName("Site_id");
+        var Str1 = $('#Str_URL').val();
+        if (Str1 == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter Http URL Setting ',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+        else {
+            SendCommand(Comm_id, Site_id, Str1, "NA");
+        }
+    } {% endcomment %}
+
+    function Set_Http_URL_Setting(Comm_id) {
+        var Site_id = getParameterByName("Site_id");
+        var IP = $('#Str_URL1').val();
+        var Port = $('#Str_URL2').val();
+        var Type = $('#TypeURL').val();
+        if (Type == "TCP") {
+            if (IP == "" || IP.length == 0 || Port == "" || Port.length == 0) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'ALL input box Required',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else {
+                SendCommand(Comm_id, Site_id, (IP  + Port), "NA");
+            }
+        } else {
+            if (IP == "" || IP.length == 0) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'ALl input box Required',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else {
+                SendCommand(Comm_id, Site_id, (IP  + "00000"), "NA");
+            }
+        }
+    
+    }
+
+// set RTC setting using command 
+
+    function Set_RTC_Setting(Comm_id) {
+        var Site_id =  getParameterByName("Site_id");
+        var Str1 = $('#Str_RTC_Setting').val();
+    
+        if (Str1 == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter RTC Setting ',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+        else {
+            if (isValidDateFormat(Str1)) {
+                SendCommand(Comm_id, Site_id, Str1, "NA");
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Invalid format input string ',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        }
+    }
+
+// registration mobile number using Command 
+
+    {% comment %} function Set_Mobile_Number_Registering(Comm_id) {
+        var Site_id =  getParameterByName("Site_id");
+        
+        var Str1 = $('#Str_Mobile').val();
+        if (Str1 == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter mobile Number',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+        else {
+            SendCommand(Comm_id, Site_id, Str1, "NA");
+        }
+    } {% endcomment %}
+
+    function Set_Mobile_Number_Registering(Comm_id) {
+        var Site_id =  getParameterByName("Site_id");
+        var Str1 = $('#Str_Mobile').val();
+        var ploicy = $("#Policy").val();
+        var isactive = $('#isactive').val();
+        Str1 = Str1 + ":" + isactive + ploicy;
+        //alert(Str1);
+        Str1 = Str1.trim();
+        if (Str1 == "") {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Enter mobile Number',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+        }
+        else {
+            Str1 = "+91" + Str1;
+                SendCommand(Comm_id, Site_id, Str1, "NA");
+            }
+        }
+            
+// set Pressure frequency   
+
+    function Set_Pressure_frequency(Comm_id) {
+        var Site_id =  getParameterByName("Site_id");
+        var Str_Pressure1 = $('#Str_Pressure1').val();
+       
+        if (Str_Pressure1 == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter Pressure Value',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } else {
+            if (parseInt(Str_Pressure1) > 0) {
+                if (Str_Pressure1.length == 1) {
+                    Str_Pressure1 = "00" + Str_Pressure1;
+                } else if (Str_Pressure1.length == 2) {
+                    Str_Pressure1 = "0" + Str_Pressure1;
+                } else {
+                    Str_Pressure1 = Str_Pressure1;
+                }
+                SendCommand(Comm_id, Site_id, Str_Pressure1, '000')
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Please enter Min Pressure Value 001.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } 
+        }
+    }
+
+// set chlorine frequency     
+    function Set_chlorine_frequency(Comm_id) {
+    
+        var Site_id =  getParameterByName("Site_id");
+        var Str_Pressure1 = $('#Str_chlorine1').val();
+       
+        if (Str_Pressure1 == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter Chlorine Value',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } else {
+            if (parseInt(Str_Pressure1) > 0) {
+                if (Str_Pressure1.length == 1) {
+                    Str_Pressure1 = "00" + Str_Pressure1;
+                } else if (Str_Pressure1.length == 2) {
+                    Str_Pressure1 = "0" + Str_Pressure1;
+                } else {
+                    Str_Pressure1 = Str_Pressure1;
+                }
+                SendCommand(Comm_id, Site_id, '000', Str_Pressure1);
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Please enter Min Chlorine Value 001.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+    
+        }
+    
+    }
+
+
+// Set Chlorine and pressure value using site id 
+
+    function Set_Pressure_and_chlorine_frequency(Comm_id) {
+        var Site_id =  getParameterByName("Site_id");
+        var Str1 = $('#Str_Pressure').val();
+        var Str2 = $('#Str_chlorine').val();
+        if (Str1 == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter Pressure',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return false;
+        }
+        else if (Str2 == "") {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter Chlorine',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return false;
+        }
+        else {
+            if (Str1.length == 1) {
+                Str1 = '00' + Str1;
+            } else if (Str1.length == 2) {
+                Str1 = '0' + Str1;
+            } else {
+                Str1 = Str1;
+            }
+            //////////
+            if (Str2.length == 1) {
+                Str2 = '00' + Str2;
+            } else if (Str2.length == 2) {
+                Str2 = '0' + Str2;
+            } else {
+                Str2 = Str2;
+            }
+            SendCommand(Comm_id, Site_id, Str1, Str2);
+        
+        }
+    }
+// Set Pressure value max min 
+    function Set_pressure_max_min(Comm_id) {
+    var Site_id =  getParameterByName("Site_id");
+    var Str1 = $('#Str_Max').val();
+    var Str2 = $('#Str_Min').val();
+
+    if (Str1 == "" || Str1.length==0) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter max pressure',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return false;
+        }
+    else if (Str2 == "" || Str2.length == 0) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Enter min pressure',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return false;
+        }
+    else {
+        if (parseInt(Str1) > parseInt(Str2)) {
+                if (parseInt(Str1) < 0) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Enter min pressure 001 should be entered.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                else if (parseInt(Str2) < 0) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Enter max pressure 001 should be entered.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else {
+                    if (Str1.length == 1) {
+                        Str1 = '00' + Str1;
+                    } else if (Str1.length == 2) {
+                        Str1 = '0' + Str1;
+                    } else {
+                        Str1 = Str1;
+                    }
+                    //////////
+                    if (Str2.length == 1) {
+                        Str2 = '00' + Str2;
+                    } else if (Str2.length == 2) {
+                        Str2 = '0' + Str2;
+                    } else {
+                        Str2 = Str2;
+                    }
+                    SendCommand(Comm_id, Site_id, Str1, Str2);
+                }
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Minimum pressure should be less than maximum pressure.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                return false;
+            }
+        }
+    }
+
+// this function explain this Password valied or not.
+    function isvalied_Password(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+// This function work to find Pressure valied or not .    
+    function isvalied_Pressure(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+
+//  This function work to find  is Valid Input in pressure max and min 
+    function isValidInput(input) {
+        // Use a regular expression to check for a valid format (001 to 999)
+        const validFormat = /^\d{1,3}$/;
+    
+        if (!validFormat.test(input)) {
+            return false; // Input does not match the format
+        }
+    
+        const number = parseInt(input, 10); // Parse the input as an integer
+    
+        if (number >= 1 && number <= 999) {
+            return true; // Input is a valid number between 001 and 999
+        } else {
+            return false; // Input is outside the desired range
+        }
+    }
+    
+    
+    function isValidDateFormat(input) {
+        // Define a regular expression pattern for the desired format
+        const pattern = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]_(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{2}$/;
+    
+        // Test the input string against the pattern
+        return pattern.test(input);
+    }
+    
+    
+    
+    
+
+
+    
+
+
+
+    
+
+
+
+ 
+
+
+
+    
+
+    
+</script>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        background: #405986;
+    }
+    
+    .container {
+        position: absolute;
+        width: 800px;
+        max-height: 500px;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .myRightCtn {
+        position: relative;
+        /*background-image: linear-gradient(45deg, #f046ff, #9b00e8);*/
+        border-radius: 25px;
+        height: 100%;
+        padding: 25px;
+        color: rgb(192, 192, 192);
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .myLeftCtn {
+        position: relative;
+        background: #234689;
+        border-radius: 25px;
+        border-width: -15px;
+        height: 100%;
+        padding: 25px;
+    }
+    
+    .myRightCtn header {
+        color: #234689;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        margin-left: -250px;
+    }
+    
+    .row {
+        height: 100%;
+        border-width: 10 px;
+        border-color: #234689;
+    }
+    
+    .myCard {
+        position: relative;
+        background: #fff;
+        height: 100%;
+        border-radius: 25px;
+        box-shadow: 0px 10px 30px -1px rgba(0, 0, 0, 0.7);
+    }
+    
+    .box {
+        position: relative;
+        margin: 20px;
+        margin-bottom: 100px;
+    }
+    
+    .h4,
+    h4 {
+        margin-top: 20px;
+    }
+    
+    .myRightCtn .myInput {
+        width: 330px;
+        border-radius: 25px;
+        padding: 10px;
+        padding-left: 50px;
+        border: 1px solid rgb(234, 234, 234);
+        /* border-color: rgb(234, 234, 234); */
+        /* box-shadow: 1px 5px 10px -14px rgba(0, 0, 0, 0.7); */
+    }
+    
+    .myRightCtn .myInput:focus {
+        outline: none;
+    }
+    
+    .myForm {
+        position: relative;
+        margin-top: 50px;
+    }
+    
+    .myRightCtn .butt {
+        background: #234689;
+        color: #fff;
+        width: 230px;
+        border: none;
+        border-radius: 25px;
+        padding: 10px;
+        box-shadow: 0px 0px 10px -10px rgba(0, 0, 0, 0.7);
+    }
+    
+    .myRightCtn .fas {
+        position: relative;
+        color: #234689;
+        left: 36px;
+    }
+    
+    .butt_out {
+        background: transparent;
+        color: #fff;
+        width: 120px;
+        border: 2px solid#fff;
+        border-radius: 25px;
+        padding: 10px;
+        box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+    }
+    
+    .butt_out:hover {
+        border: 2px solid#eecbff;
+    }
+    
+    .butt_out:focus {
+        outline: none;
+    }
+    
+    .droap {
+        height: 120px;
+        animation: 3s infinite alternate slidein;
+    }
+    
+    @keyframes slidein {
+        0% {
+            margin-top: 0px;
+        }
+        100% {
+            margin-top: -50px;
+        }
+    }
+    
+    .blr {
+        position: absolute;
+        height: 100px;
+        width: 200px;
+        z-index: 15;
+        backdrop-filter: blur(10px);
+        top: 90px;
+    }
+
+    .badge-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        display: inline-block;
+        border-radius: 50px;
+    }
+
+.navbar .navbar-nav > li > a .material-icons,
+.navbar .navbar-nav > li > a .fa {
+  font-size: 20px;
+  max-width: 20px;
+}
+.navbar .navbar-nav > li > a:not(.btn-just-icon) .fa {
+  position: relative;
+  top: 2px;
+  margin-top: -4px;
+  margin-right: 4px;
+}
+.carousel .carousel-control .material-icons,
+.carousel .carousel-control .fa {
+  display: none;
+}
+.carousel .left {
+  cursor: url("../img/arrow-left.png"), url("../img/arrow-left.cur"), default !important;
+}
+.carousel .right {
+  cursor: url("../img/arrow-right.png"), url("../img/arrow-right.cur"), default !important;
+}
+.carousel .carousel-indicators {
+  bottom: 5px;
+}
+.carousel .carousel-indicators li,
+.carousel .carousel-indicators .active {
+  margin: 11px 10px;
+}

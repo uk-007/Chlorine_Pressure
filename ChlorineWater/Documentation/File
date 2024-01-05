@@ -1,0 +1,103 @@
+This is Documentation  to Water_Chlorine Project.
+
+# This is total 7 pages use
+1. Login Page 
+2. Forgot Password Page
+3. Dashboard 
+4. Device Info(Information)
+5. Device Data
+6. Show Setting Device Data 
+7. Setting Command.
+
+######
+----------------------------------------------------------------------------------------------------------------------
+1. Login Page:
+          --- Use Parameters in Login Page-
+           1.Loginid(Username).
+           2. Password.
+           3.Captcha
+
+           if Username valid then open Dashboard Page else Login page.
+
+----------------------------------------------------------------------------------------------------------------------
+2. Forgot Password Page :        
+         Forgot Password if password not remember.
+         ---Use Parameter
+         1. Loginid(Username)
+         2.New Password
+         3. Re Enter Password (for matching to New Password)
+         4.Captcha
+
+----------------------------------------------------------------------------------------------------------------------
+3. Dashboard :
+           Show All Data in Dashboard (depend  all data to dashboard  State and district ) 
+           
+                State(select state for dropdown).
+                District (select District for dropdown according to State).   
+            ----------------------------------------------------------------------------------------------------------
+                ---- Modules:
+####                
+                Site Status :-
+                      -- Use Parameter 
+                      1.Stateid
+                      2.districtid
+
+                      Show Count Sites With Charts  : 1. Total sites
+                                                      2. Active Site
+                                                      3.Inactive Site
+                                                      4.Pending Site
+
+####
+                 Device Status :-
+                      -- Use Parameter 
+                      1.Stateid
+                      2.districtid
+
+                      Show Count Devices With Charts  : 1. Total Devices
+                                                      2. Active Devices
+                                                      3.Inactive Devices
+                                                      4.Pending Devices                                     
+####                
+                site Map with Details:
+                                      1.Stateid
+                                      2.districtid
+####
+                Status Panel : Show Current Record to Chlorine.    
+                                        Parameter: 1.Stateid
+                                                   2.districtid   
+
+* Click to Site name then get Site id and show details  site data . 
+
+------------------------------------------------------------------------------------------------------------------    4.Divice Info(Information)  :
+               Parameter:siteid                                                                                          
+             Modules:
+             1.Site Details   
+             2. Device Details
+             3.Water Quality Chlorine  : Pai Charts  
+                                            Graph
+
+             4.Water Quality Pressure  :Pai Charts  
+                                            Graph                 
+---------------------------------------------------------------------------------------------------------------------
+5. Device Data: 
+            Show device data in table 
+            Use parameter: Siteid  , to Date  ,   Frome date , Chlorine value=<   ,  Pressure value=<
+
+            Download record : excel and pdf.
+--------------------------------------------------------------------------------------------------------------------
+
+6. Show Setting Device Data: 
+                         Show Setting Device data in table .
+                         Use parameter: Siteid  , to Date  ,   Frome date , Chlorine value=<   ,  Pressure value=<
+
+            Download record : excel and pdf.
+----------------------------------------------------------------------------------------------------------------------
+7. Setting Command : 
+                 All Settiing Command manage this page .
+
+                 Parameter: Siteid
+
+
+
+
+

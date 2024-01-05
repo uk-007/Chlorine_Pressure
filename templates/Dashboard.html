@@ -1,0 +1,2013 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Mega Worker DashBoard</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    
+    <link href="static/assets/img/favicon.png" rel="icon">
+    <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+        <!-- Template Main CSS File -->
+        {% load static %}
+        <link rel="stylesheet"  href="{% static 'assets/css/style.css' %}">
+
+    <!-- Vendor CSS Files -->
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/aos/aos.css' %}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/glightbox/css/glightbox.min.css '%}">
+    {% load static %}
+    <link  rel="stylesheet" href="{% static 'assets/vendor/remixicon/remixicon.css '%}">
+    {% load static %}
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css '%}" rel="stylesheet">
+
+    {% load static %}
+    <link href="{% static 'dist/apexcharts.css'%}" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+
+   
+
+  {% comment %} #map {
+    height: 600px;
+    width: 100%;
+    background-color: grey;
+} {% endcomment %}
+
+<style>
+
+    {% comment %} .canvasjs-chart-canvas{
+        width:100% !important;
+        height:400px !important;
+    } {% endcomment %}
+
+    .bell-notification{
+        position:relative;
+        font-size:16px !important;
+    }
+    .bell-notification:after{
+        content:attr(data-notification-count);
+        position:absolute;
+        top:0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-style:normal;
+    }
+</style>
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+            <!--<h1 class="logo me-auto"><a href="index.html">Mega worker</a></h1>-->
+            <!-- Uncomment below if you prefer to use an image logo -->
+            {% load static %}
+            <a href="Dashboard_Page" class="logo me-auto"><img src="static/assets/img/logo.png" alt="" class="img-fluid" style ="height:65px;width:500px;"></a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="Dashboard_Page">DashBoard</a></li>
+                    <!--<li><a class="nav-link scrollto" href="#history">history</a></li>
+                    <li><a class="nav-link scrollto" href="#user">User</a></li>
+                    <li>
+                        <a class="nav-link scrollto" href="#"></a>
+                    </li>-->
+
+                    <li class="dropdown"><a href=""><i class="bi bi-bell bell-notification" id="notification_count" data-notification-count="" ></i></a>
+                        {% comment %} <i class="bi bi-chevron-down"></i> {% endcomment %}
+                        
+                        <ul style=" width:200px">
+                            
+                            <div class="text-muted d-flex justify-content-between mb-2" onclick="openstatusmodel_dt('1');">
+                                <span>
+                                <div class="badge-dot " style="background-color: #2fcd9f"></div>
+                                Battery Alert</span>
+                                <span><strong id="Battery_alert_id">0</strong></span>
+                            </div>
+                            <hr>
+                            
+                            <div class="text-muted d-flex justify-content-between mb-2" onclick="openstatusmodel_dt('2');">
+                                <span>
+                                <div class="badge-dot " style="background-color: #2fcd9f"></div>
+                                Chlorine Alert</span>
+                                <span><strong id="Chlorine_alert_id">0</strong></span>
+                            </div>
+                            <hr>
+                            {% comment %} <li class="dropdown"><a href="#"><span>Chlorine Alter</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul id="Chlorine_alert">
+                                    <li><a href="#"id="Chlorine_alert_id">Deep Drop Down 1</a></li>
+                                    
+                                    
+                                </ul>
+                            </li> {% endcomment %}
+                            {% comment %} <li><a class="nav-link scrollto" href="#master">Memory Alert</a> {% endcomment %}
+
+                                <div class="text-muted d-flex justify-content-between mb-2" onclick="openstatusmodel_dt('3');" >
+                                    <span>
+                                    <div class="badge-dot " style="background-color: #2fcd9f"></div>
+                                    Memory Alert</span>
+                                    <span><strong id="Memory_alert_id">0</strong></span>
+                                </div>
+
+                            {% comment %} <li class="dropdown"><a href="#"><span>Memory Alert</span> <i class="bi bi-chevron-right"></i></a>    
+                                <ul id="Memory_alert">
+                                    <li><a href="#" id="Memory_alert_id" >Deep Drop Down 3</a></li>
+    
+                                </ul>
+                            </li> {% endcomment %}
+                 
+                        </ul>
+                    </li>
+                    <li><a class="nav-link scrollto" href="Login">Logout</a></li>
+                    <li><a class="nav-link scrollto" href="#"></a></li>
+                    <li><a class="nav-link scrollto" href="#"></a></li>
+                    
+                    {% comment %} <li><a class="getstarted scrollto" href="#about">Get Started</a></li> {% endcomment %}
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                    <h1>Better Solutions For Your Water Chlorine Problem</h1>
+                    <h2>This is mega water Project. </h2>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                        {% comment %} <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                        <a href="#" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> {% endcomment %}
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img " data-aos="zoom-in" data-aos-delay="200" style="text-align: center;">
+                    <img src="static/assets/img/hero-img.png" class="img-fluid animated" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Hero -->
+
+    <div class="content">
+        <!--<form method="post" action="./dashboard.aspx" id="form1">-->
+        <div class="aspNetHidden">
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="Q3O9I3byaM2+surMxzUuXsgE35bRvZEShaYgzMxaQwGMT1yA9EtE+AwC13FN6Wa/oGWfP3V7seVKBHEP4mxwqmuaS6n3FnBp/ux7DwRSa/U=" />
+        </div>
+        <div class="aspNetHidden">
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="03A7783B" />
+        </div>
+    </div>
+
+
+    <div class="Main">
+        <div class="row ">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row " style="padding-left: 10px;">
+                            <div class="col-3">
+                            </div>
+                            <div class="col-3">
+                            </div>
+                            <div class="col-3">
+                                <strong>State</strong>
+                                <select class="js-example-basic-single form-select form-control-sm"   id="Stateid" onchange="get_district(this.value)">
+                                    
+                                    <option value="0">ALL</option>
+
+                                    {% for thing in state_Dict %}
+                                    
+                                      <option value="{{thing.0}}">{{thing.1}}</option>
+                                
+                                    {% endfor %}
+                                </select>
+
+
+                            </div>
+                            <div class="col-3">
+                                 <strong>District</strong>
+                                <select class="js-example-basic-single form-select form-control-sm"  id="Districtid" onchange="showData()">
+                                    
+                                    <option value="0">ALL</option> 
+
+                                        
+                                </select> 
+
+                                {% comment %} <strong>District</strong>
+                                <select class="js-example-basic-single form-select form-control-sm" id="Districtid" onchange="showData()">
+                                <option value="0">ALL</option>
+    
+                                {% for district in District_Dict %}
+                                <option value="{{ district.id }}">{{ district.Name }}</option>
+                                {% endfor %}
+                                </select> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+    <!--Site Details-->
+
+    <div class="row ">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row ">
+                        <div class="col-12">
+                            <h4>Site Status</h4>
+                            <hr>
+                        </div>
+                        <div class="col-6">
+                            <div class="mt-4">
+                                <div class="text-muted d-flex justify-content-between mb-2">
+                                    <span>
+                                    <div class="badge-dot " style="background-color: #2fcd9f"></div>
+                                    Total</span>
+                                    <span><strong id="Total">0</strong></span>
+                                </div>
+                                <hr>
+                            </div>
+                            <div>
+                                <div class="text-muted d-flex justify-content-between mb-2">
+                                    <span>
+                                    <div class="badge-dot " style="background-color: #6ce468"></div>
+                                    Active</span>
+                                    <span><strong id="Active">0</strong></span>
+                                </div>
+                                <hr>
+                            </div>
+                            <div>
+                                <div class="text-muted d-flex justify-content-between mb-2">
+                                    <span>
+                                    <div class="badge-dot" style="background-color: #ee6a89"></div>
+                                    Inactive</span>
+                                    <span><strong id="NonActive">0</strong></span>
+                                </div>
+                                <hr>
+                            </div>
+                            <div>
+                                <div class="text-muted d-flex justify-content-between mb-2">
+                                    <span>
+                                    <div class="badge-dot" style="background-color: #f5ec2b"></div>
+                                    Pending</span>
+                                    <span><strong id="Pending">0</strong></span>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div id="SiteStatusChart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class=" col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row ">
+                        <div class="col-12">
+                            <h4>Device Status</h4>
+                            <hr>
+                        </div>
+                        <div class="col-6">
+                            <div class="mt-4">
+                                <div class="text-muted d-flex justify-content-between mb-2">
+                                    <span>
+                                    <div class="badge-dot" style="background-color: #2fcd9f"></div>
+                                    Total</span>
+                                    <span><strong id="DTotal">0</strong></span>
+                                </div>
+                                <hr>
+                            </div>
+                            <div>
+                                <div class="text-muted d-flex justify-content-between mb-2">
+                                    <span>
+                                    <div class="badge-dot" style="background-color: #6ce468 "></div>
+                                    Active</span>
+                                    <span><strong id="DActive">0</strong></span>
+                                </div>
+                                <hr>
+                            </div>
+                            <div>
+                                <div class="text-muted d-flex justify-content-between mb-2 ">
+                                    <span>
+                                    <div class="badge-dot " style="background-color: #ee6a89 "></div>
+                                    Inactive</span>
+                                    <span><strong id="DNonActive">0</strong></span>
+                                </div>
+                                <hr>
+                            </div>
+                            <div>
+                                <div class="text-muted d-flex justify-content-between mb-2 ">
+                                    <span>
+                                    <div class="badge-dot " style="background-color: #f5ec2b "></div>
+                                    Pending</span>
+                                    <span><strong id="DPending">0</strong></span>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div id="deviceStatusChart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--Map-->
+
+
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="align-items-center justify-content-between">
+                    <div style="align-items: top;">
+                        <h4>Consumers on map</h4>
+                    </div>
+                    {% comment %} <div class="text-success fw-bold font-size-lg ">
+                        <input class="form-control form-control-sm " type="text" placeholder="Search ">
+                    </div> {% endcomment %}
+                </div>
+                <div class="row">
+                    <div class="col-12" >
+                        <div style="margin: 4px, 4px; padding: 4px; width: auto; height: auto; max-height: 600px; overflow-x: auto; overflow-y: auto; text-align: justify;">
+                            <div id="map-canvas1" style="height: 500px;"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Table-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    {% comment %} <div class="d-flex justify-content-center">
+                        <div class="spinner-border"
+                             role="status" id="loading">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div> {% endcomment %}
+                    <div class="col-md-12">
+                        <h4>Status Panel</h4>
+                    </div>
+                    
+                    <!-- table for showing data -->
+                    
+                    <table class="table table-hover mt-2 text-center" id="tabStatus">
+                        <thead>
+                            <tr>
+                                <th>Sr No</th>
+                                <th>Site Name </th>
+                                <th>Device Number</th>
+                                <th>Chlorine(PPM) </th>
+                                <th>Water Pressure(BAR)</th>
+                                <th>Battery Percentage(%)</th>
+                                <th>Battery Voltage</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- Full screen modal -->
+
+    <div class="modal fade" id="fullScreenModalTest" aria-hidden="true " aria-labelledby="exampleModalToggleLabel" tabindex="-1 ">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Dashboard</h5>
+
+                </br>
+                    
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   
+                </div>
+                <div class="modal-body">
+                    <main id="main">
+                        <!-- Added Dashboard Elements -->
+                        <div class="content">
+                            <div class="main">
+                                <button style="float:right;   background-color:rgb(255, 255, 255); border-radius:10px; border-color: none" onclick="location.href='/Profile';">Get In Touch!</button>
+                                
+                                <button style="float:right;  background-color:rgb(255, 255, 255); border-radius:10px; border-color: none" id="SettingId" onclick="location.href='/Get_Setting_Command';">Setting Command</button>
+                                <button style="float:right;   background-color:rgb(255, 255, 255); border-radius:10px; border-color: none" id="Site_id" onclick="location.href='/Get_Device_Data';">Device Data</button>
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+               
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        
+                                                    <div class="col-md-6" style="border-right:2px solid grey;">
+                                                        <div class="row">
+                                                            <div >
+                                                                <h4><center><b> Site Details </b></center> </h4>
+                                                            </div>
+    
+                                                             <div class="mt-4">
+                                                                <div class="text-muted d-flex justify-content-between mb-2">
+                                                                    <span><div class="badge bg-primary"></div>Name :</span>
+                                                                    <span><strong id="SiteName" >dehradun/l</strong></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-4">
+                                                                <div class="text-muted d-flex justify-content-between mb-2">
+                                                                    <span><div class="badge bg-warning "></div>IMEI Number :</span>
+                                                                    <span><strong id="imeiid">2345677653</strong></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-4">
+                                                                <div class="text-muted d-flex justify-content-between mb-2">
+                                                                    <span><div class="badge bg-success "></div>Mobile Number :</span>
+                                                                    <span><strong id="mobileid">1433445545</strong></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-4">
+                                                                <div class="text-muted d-flex justify-content-between mb-2">
+                                                                    <span><div class="badge bg-danger "></div>Address :</span>
+                                                                    <span><strong id="Addressid">Prayagraj</strong></span>
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="row">
+                                                            <div >
+                                                                <h4><center><b> Device Details </b></center> </h4>
+                                                            </div>
+                                                            <div class="mt-4">
+                                                                <div class="text-muted d-flex justify-content-between mb-2">
+                                                                    <span><div class="badge bg-primary "><img src="assets/img/icons/chl.png " style="height: 20px; "></div> Status</span>
+                                                                    <span><strong id="DStatus">1.5 mg/l</strong></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-4">
+                                                                <div class="text-muted d-flex justify-content-between mb-2">
+                                                                    <span><div class="badge bg-warning "><img src="assets/img/icons/temp.png " style="height: 20px; "></div> Chlorine</span>
+                                                                    <span><strong id="chlorineid">70 F</strong></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-4">
+                                                                <div class="text-muted d-flex justify-content-between mb-2">
+                                                                    <span><div class="badge bg-success "><img src="assets/img/icons/turb.png " style="height: 20px; "></div> WaterPressure</span>
+                                                                    <span><strong id="waterPressureid">30 NTU</strong></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-4">
+                                                                <div class="text-muted d-flex justify-content-between mb-2">
+                                                                    <span><div class="badge bg-danger "><img src="assets/img/icons/ph.png " style="height: 20px; "></div> Battery_Percentage</span>
+                                                                    <span><strong id="bettery_Perid">7.5 pH</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-4 ">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row  ">
+                                                <div class="col-12 ">
+                                                    <strong>Water Chlorine Quality</strong>
+                                                    <hr>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <canvas id="myGaugeChart"></canvas>
+
+                                                </br>
+                                            </br>
+                                        </br>
+                                                <button id="chlorine_button" style="border:none;width: 30px;height: 23px;"></button>
+                                                <label id="chlorine_range" style="width:50%;">chlorine</label>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-8 ">
+                                    <div class="card ">
+                                            <div class="  " style="height:400px;">
+                                                <div id="ChlorineChartContainer" style="height: 400px; width: 100%;">
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-4 ">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row  ">
+                                                <div class="col-12 ">
+                                                    <strong>Water Pressure Quality</strong>
+                                                    <hr>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row  ">
+                                                <canvas id="myGaugeChartP"></canvas>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-8 ">
+                                    <div class="card ">
+                                        
+                                            <div class="" style="height:400px;">
+                                                <div id="PressureChartContainer"  style="height: 400px; width: 100%;">
+                                                </div>
+                                            </div>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Contact Section -->
+
+        </main>
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="AlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover mt-2 text-center" id="tabAlter"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <!-- End #main -->
+    <!--Modal End-->
+
+    <!-- ======= Footer ======= -->
+    <!-- <div class="row ">
+                <div class="card "> -->
+    <footer id="footer ">
+        <div class="footer-top ">
+            <div class="container ">
+                <div class="row ">
+                    <div class="footer-contact ">
+                        <center><h5> <p class="mb-0 ms-auto me-auto" id="currentYear">Copyright ©  MEGA WORKER. All rights reserved.</p></h5></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <!-- </div>
+            </div> -->
+    </div>
+    </div>
+    </div>
+
+    <div id="preloader "></div>
+    <a href="# " class="back-to-top d-flex align-items-center justify-content-center "><i class="bi bi-arrow -up-short "></i></a>
+
+    <!-- Vendor JS Files -->
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js "></script>
+    
+    <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-labels@1.1.0/build/chartjs-plugin-labels.min.js"></script>
+
+    
+    <script src="static/dist/apexcharts.js "></script>
+    <script src="static/assets/vendor/aos/aos.js "></script>
+    <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
+    <script src="static/assets/vendor/glightbox/js/glightbox.min.js "></script>
+    <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js "></script>
+    <script src="static/assets/vendor/swiper/swiper-bundle.min.js "></script>
+    <script src="static/assets/vendor/waypoints/noframework.waypoints.js "></script>
+    <script src="static/assets/vendor/php-email-form/validate.js "></script>
+    <script  src="../Jquery/jquery.multiselect.js"></script>
+    <script  src="../Jquery/prettify.js"></script>
+ <!-- GMap  JS File -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlXeOYex9U97yKj-1ECwvWRgwHkCF6oO4&callback"></script>
+   
+
+    <!-- Template Main JS File -->
+    <script src="static/assets/js/main.js "></script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.stock.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    
+
+    
+   
+    
+    
+    <script>
+        // auto load
+        $(document).ready(function () {
+            $(function () {
+                
+               // get_district();
+                //showData();
+                var str = document.getElementById("Stateid").value;
+                get_district(str);
+                //getSiteStatus(0, 0);
+               // getDeviceStatus(0, 0);
+            });
+        });
+
+       // onchange State
+       // console.log("ABOVE get_district fxn");
+        function get_district(str){
+            let url12 = "{% url 'Get_CityList' %}";
+            if(str == 0){
+                $("#Districtid").find("option").remove().end().append('<option value = "0">All</option>');
+                
+            }else{
+                console.log("state apart from All")
+                console.log(str);
+                $.ajax({
+                    type: 'POST',
+                    url: url12,
+                    data: {StateId: str},
+                    success: function (response) {
+                       
+                        data = response
+                        
+                        if (!response["valid"]) {
+                            //console.log(data[0][1])          //printing dehradun in console
+                            $("#Districtid").find("option").remove().end().append('<option value = "0">All</option>');
+                            Object.entries(data).map(entry => {
+                                //console.log(entry)
+                                let key = entry[1][0];          //key is id of city
+                                let value = entry[1][1];        //value is name of city
+                                
+                                console.log(key);
+                                console.log(value)
+                                var x = document.getElementById("Districtid");
+                                var option = document.createElement("option");
+                                option.text = value;
+                                option.value = key;
+                                x.add(option);
+                            
+                                
+                             });
+                                
+    
+                            
+                        } else {
+    
+                // Alert for an error
+                            alert("Error");
+                        }
+                    }
+                });
+    
+    
+            }
+            showData();
+    
+        }
+
+        
+// District -> onchange function
+
+        function showData(){
+           // var str=str;
+            var str = document.getElementById("Stateid").value;
+            var str1 =document.getElementById("Districtid").value
+           // alert(str,str1);
+            getSiteStatus(str,str1);
+            getDeviceStatus(str,str1);
+            StatusPanel(str,str1);
+            initMap(str,str1);
+            Get_Alert(str,str1); 
+        
+        }
+
+
+        ////// show alert data
+
+        function Get_Alert(str, str1) {
+            // Alert for debugging purposes
+            //alert(12345567);
+        
+            // Define the URL for the AJAX request
+            var url = "{% url 'GetAlter' %}";
+        
+            // Extract state and district IDs
+            var state_id = str;
+            var district_id = str1;
+        
+            // Make an AJAX POST request
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { Stateid: str, Districtid: str1 },
+                success: function (response) {
+                    if (!response["valid"]) {
+                        let Battery_alert_id = response[0][0];
+                        //console.log(total);
+                        let Chlorine_alert_id = response[0][1];
+                        let Memory_alert_id = response[0][2];
+                             
+                            // Update HTML elements with data
+                        
+                        document.getElementById("Battery_alert_id").innerHTML = Battery_alert_id  ;
+                        document.getElementById("Chlorine_alert_id").innerHTML = Chlorine_alert_id;
+                        document.getElementById("Memory_alert_id").innerHTML = Memory_alert_id;
+                        //--openstatusmodel_dt()
+
+                        var notification_count= response[0][0]+response[0][1]+response[0][2];
+
+                        document.getElementById("notification_count").setAttribute("data-notification-count", notification_count);
+
+                      // .setAttribute("class", "democlass"); 
+                        //console.log(response[0][0]);
+
+        
+                        // Loop through the response data
+
+                    } else {
+                        // Alert for an error
+                        alert("Error response not valid");
+                    }
+                },
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            return false;
+        }
+
+
+
+        function openstatusmodel_dt(type){ 
+          //  alert(type);
+            
+            var str = document.getElementById("Stateid").value;
+            var str1 =document.getElementById("Districtid").value
+            // Define the URL for the AJAX request
+            var url = "{% url 'Get_AlterDetails' %}";
+            // Make an AJAX POST request
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { type: type ,Stateid: str, Districtid: str1 },
+                success: function (response) {
+                   // console.log(response)
+                   // console.log(response[0])
+                    if (!response["valid"]) {
+                        var table = document.getElementById("tabAlter");
+                        table.innerHTML = ""; // Clear the existing content
+
+                        $.each(response, function (index, data) {
+                           
+                            if (data[1] != null) {
+                                $("#AlertModal").modal('show');
+
+                            if(type==1){
+                                let site_id =data[0];
+                                let Total_battery_Alert = data[1];
+                                var row = table.insertRow();
+                                var cell1 = row.insertCell(0);
+                                var cell2 = row.insertCell(1);
+                                cell1.innerHTML = index + 1;
+                                cell2.innerHTML = `<span style="color: red; cursor: pointer;" data-site-id="${Site_id}">${Total_battery_Alert}</span>`;
+                                cell2.onclick = function () {
+                                    // Open modules or perform action
+                                    var siteId = $(this).find("span").data("site-id");
+                                    console.log('Site name clicked: ' + Total_battery_Alert);
+                                    // Call your Modal_ShowSiteDetails function with the siteId
+                                    //Modal_ShowSiteDetails(siteId);
+    
+                                    //document.getElementById($(this).find("span").data("site-id")).addEventListener("click", function() {
+                                        // Get the site ID from the button's id attribute
+                                        var Site_id = site_id;
+                                        // Navigate to another page with the site ID as a parameter
+                                        window.location.href = "/Device_Info?Site_id=" + Site_id;
+                                                
+                                    }
+                               
+                            }
+                            else if(type==2){
+                                let site_id =data[0];
+                                let Total_chlorine_Alert = data[1];
+                                var row = table.insertRow();
+                                var cell1 = row.insertCell(0);
+                                var cell2 = row.insertCell(1);
+                                cell1.innerHTML = index + 1;
+                               // cell2.innerHTML = Total_chlorine_Alert;
+                               cell2.innerHTML = `<span style="color: red; cursor: pointer;" data-site-id="${Site_id}">${Total_chlorine_Alert}</span>`;
+                               
+                               cell2.onclick = function () {
+                                // Open modules or perform action
+                                var siteId = $(this).find("span").data("site-id");
+                                console.log('Site name clicked: ' + Total_chlorine_Alert);
+                                // Call your Modal_ShowSiteDetails function with the siteId
+                                //Modal_ShowSiteDetails(siteId);
+
+                                //document.getElementById($(this).find("span").data("site-id")).addEventListener("click", function() {
+                                    // Get the site ID from the button's id attribute
+                                    var Site_id = site_id;
+                                    // Navigate to another page with the site ID as a parameter
+                                    window.location.href = "/Device_Info?Site_id=" + Site_id;
+                                            
+                                }
+
+                            }
+
+                            else if(type==3){
+                                let site_id =data[0];
+                                let Total_Memory_Alert = data[1];
+                                var row = table.insertRow();
+                                var cell1 = row.insertCell(0);
+                                var cell2 = row.insertCell(1);
+                                cell1.innerHTML = index + 1;
+                               // cell2.innerHTML = Total_Memory_Alert;
+
+                               cell2.innerHTML = `<span style="color: red; cursor: pointer;" data-site-id="${Site_id}">${Total_Memory_Alert}</span>`;
+                               cell2.onclick = function () {
+                                // Open modules or perform action
+                                var siteId = $(this).find("span").data("site-id");
+                                console.log('Site name clicked: ' + Total_Memory_Alert);
+                                // Call your Modal_ShowSiteDetails function with the siteId
+                                //Modal_ShowSiteDetails(siteId);
+
+                                //document.getElementById($(this).find("span").data("site-id")).addEventListener("click", function() {
+                                    // Get the site ID from the button's id attribute
+                                    var Site_id = site_id;
+                                    // Navigate to another page with the site ID as a parameter
+                                    window.location.href = "/Device_Info?Site_id=" + Site_id;
+                                            
+                                }
+
+                            }
+                        }else{
+                            $("#AlertModal").modal('hide');
+                            alert("No Alert Found");
+                        }
+                        
+        
+                         });//  Object.entries(data).map(entry => {
+                     //}//.then(data => {
+                    } else {
+                        // Alert for an error
+                        alert("Response not valid");
+                    }
+                },
+            })   
+             .catch(error => {
+                console.error('Error:', error);
+             });
+        }
+
+///////// Get site Status  to use procedure
+
+        function getSiteStatus(str, str1) {
+            // Alert for debugging purposes
+            //alert(12345567);
+        
+            // Define the URL for the AJAX request
+            var url = "{% url 'Get_SiteStatus' %}";
+        
+            // Extract state and district IDs
+            var state_id = str;
+            var district_id = str1;
+        
+            // Make an AJAX POST request
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { Stateid: str, Districtid: str1 },
+                success: function (response) {
+                    if (!response["valid"]) {
+                        let total = response[0][0];
+                        //console.log(total);
+                        let active = response[0][1];
+                        let nonActive = response[0][2];
+                        let pending = response[0][3];      
+                        // Update HTML elements with data
+                        document.getElementById("Total").innerHTML = total;
+                        document.getElementById("Active").innerHTML = active;
+                        document.getElementById("NonActive").innerHTML = nonActive;
+                        document.getElementById("Pending").innerHTML = pending;
+                        console.log(response[0][0]);
+
+                        Show_Site_Charts(response[0][0], response[0][1], response[0][2], response[0][3]);
+        
+                        // Loop through the response data
+
+                    } else {
+                        // Alert for an error
+                        alert("Error response not valid");
+                    }
+                },
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            return false;
+        }
+        
+// show site  Status chart 
+        function Show_Site_Charts(total, active, nonActive, pending) {
+            
+           // console.log(total, active, nonActive, pending);
+          //  console.log("ritika");
+            var colorPalette = ['#6ce468', '#ee6a89', '#f5ec2b'];
+            var optionDonut = {
+                chart: {
+                    type: 'donut',
+                    width: '100%'
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '55%',
+                        },
+                        offsetY: 20,
+                    },
+                    stroke: {
+                        colors: undefined
+                    }
+                },
+                colors: colorPalette,
+                series: [active, nonActive, pending],
+                labels: ['active', 'nonActive', 'pending'],
+                legend: {
+                    show: false,
+                    position: 'left',
+                    offsetY: 80
+                }
+            }
+            // Check if the element with ID "SiteStatusChart" exists
+            var chartElement = document.querySelector("#SiteStatusChart");
+            //console.log(chartElement);
+            if (chartElement) {
+                var donut = new ApexCharts(chartElement, optionDonut);
+                donut.render();
+              
+                
+            } else {
+                console.error("Element with ID 'SiteStatusChart' not found.");
+            }
+
+
+            donut.updateOptions([{
+                chart: {
+                    type: 'donut',
+                    width: '100%'
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '55%',
+                        },
+                        offsetY: 20,
+                    },
+                    stroke: {
+                        colors: undefined
+                    }
+                },
+                colors: colorPalette,
+                series: [active, nonActive, pending],
+                labels: ['active', 'nonActive', 'pending'],
+                legend: {
+                    show: false,
+                    position: 'left',
+                    offsetY: 80
+                }
+             }]);
+         
+
+           // $(window).trigger('resize');
+            
+
+            
+        }
+        
+
+
+/// show device status 
+         function getDeviceStatus(str, str1) {
+            // Alert for debugging purposes
+            //alert(12345567);
+        
+            // Define the URL for the AJAX request
+            var url = "{% url 'Get_DeviceStatus' %}";
+        
+            // Extract state and district IDs
+            //var Stateid = str;
+            //var Districtid = str1;
+        
+            // Make an AJAX POST request
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { Stateid: str, Districtid: str1,devive_no:'ALL'},
+                success: function (response) {
+                    if (!response["valid"]) {
+                            // Extract data fields
+                        let D_total = response[0][0];
+                        //console.log(D_total);
+                        let D_active = response[0][1];
+                        let D_nonActive = response[0][2];
+                        let D_pending = response[0][3];
+
+                            // Update HTML elements with data
+                        document.getElementById("DTotal").innerHTML=D_total
+                        document.getElementById("DActive").innerHTML=D_active
+                        document.getElementById("DNonActive").innerHTML=D_nonActive
+                        document.getElementById("DPending").innerHTML=D_pending
+                        
+                        Show_Device_Charts(response[0][0], response[0][1], response[0][2], response[0][3]);
+
+                        console.log(response[0][0], response[0][1], response[0][2], response[0][3]);
+                        // Loop through the response data
+
+                    } else {
+                        // Alert for an error
+                        alert("response not valid");
+                    }
+                },
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }    
+        
+// show device Status chart 
+
+         function Show_Device_Charts(Total, Active, NonActive, Pending) {
+           // alert(Total+""+ Active+""+ NonActive+""+ Pending);
+            var colorPalette = ['#6ce468', '#ee6a89', '#f5ec2b'];
+            var optionDonut = {
+                chart: {
+                    type: 'donut',
+                    width: '100%'
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '55%',
+                        },
+                        offsetY: 20,
+                    },
+                    stroke: {
+                        colors: undefined
+                    }
+                },
+                colors: colorPalette,
+                series: [Active, NonActive, Pending],
+                labels: ['Active', 'NonActive', 'Pending'],
+                legend: {
+                    show: false,
+                    position: 'left',
+                    offsetY: 80
+                }
+            }
+        
+            var donut = new ApexCharts(
+                document.querySelector("#deviceStatusChart"),
+                optionDonut
+            )
+            donut.render();
+
+
+
+            donut.updateOptions([{
+                chart: {
+                    type: 'donut',
+                    width: '100%'
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '55%',
+                        },
+                        offsetY: 20,
+                    },
+                    stroke: {
+                        colors: undefined
+                    }
+                },
+                colors: colorPalette,
+                series: [Active, NonActive, Pending],
+                labels: ['Active', 'NonActive', 'Pending'],
+                legend: {
+                    show: false,
+                    position: 'left',
+                    offsetY: 80
+                }
+             }]);
+        
+        }// end Show_Device_Charts function
+
+///test status Panel
+        function StatusPanel(str, str1) {
+            // Alert for debugging purposes
+            //alert(12345567);
+        
+            // Define the URL for the AJAX request
+            var url = "{% url 'StatusPanel' %}";
+        
+            // Make an AJAX POST request
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { Stateid: str, Districtid: str1, device_no: 'ALL' },
+                success: function (response) {
+                    console.log(response)
+                    if (!response["valid"]) {
+                        // Clear the table before populating it
+                        var table = document.getElementById("tabStatus");
+                        table.innerHTML = ""; // Clear the existing content
+        
+                        // Create the table heading
+                        var thead = table.createTHead();
+                        var row = thead.insertRow();
+                        var headings = ["Sr No", "Site Name", "Device Number", "Chlorine(PPM)", "Water Pressure(BAR)", "Battery Percentage(%)", "Battery Voltage"];
+                        for (var i = 0; i < headings.length; i++) {
+                            var th = document.createElement("th");
+                            th.innerHTML = headings[i];
+                            row.appendChild(th);
+                        }
+                        var Site_id;
+                        // Loop through the response data and populate the table body
+                        $.each(response, function (index, data) {
+                            let Site_id = data[0];
+                            Site_id = data[0];
+                            let site_name = data[1];
+                            let device_num = data[2];
+                            let Chlorine = data[3];
+                            let WaterPressure = data[4];
+                            let Battery_Percentage = data[5];
+                            let Battery_Voltage = data[6];
+        
+                            var row = table.insertRow();
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            var cell4 = row.insertCell(3);
+                            var cell5 = row.insertCell(4);
+                            var cell6 = row.insertCell(5);
+                            var cell7 = row.insertCell(6);
+        
+                            cell1.innerHTML = index + 1;
+                            cell2.innerHTML = `<span style="color: blue; cursor: pointer;" data-site-id="${Site_id}">${site_name}</span>`;
+                            cell3.innerHTML = device_num;
+                            cell4.innerHTML = Chlorine;
+                            cell5.innerHTML = WaterPressure;
+                            cell6.innerHTML = Battery_Percentage;
+                            cell7.innerHTML = Battery_Voltage;
+        
+                            // Add a click event to site_name
+                            cell2.onclick = function () {
+                                // Open modules or perform action
+                                var siteId = $(this).find("span").data("site-id");
+                                console.log('Site name clicked: ' + site_name);
+                                // Call your Modal_ShowSiteDetails function with the siteId
+                                //Modal_ShowSiteDetails(siteId);
+
+                                //document.getElementById($(this).find("span").data("site-id")).addEventListener("click", function() {
+                                    // Get the site ID from the button's id attribute
+                                    var Site_id = siteId;
+                                    // Navigate to another page with the site ID as a parameter
+                                    window.location.href = "/Device_Info?Site_id=" + Site_id;
+                                            
+                               // });
+
+
+
+                                //var Site_id=siteId
+                                document.getElementById("Site_id").addEventListener("click", function() {
+                            // Get the site ID from the button's id attribute
+                                    var Site_id = siteId;
+                                // Navigate to another page with the site ID as a parameter
+                                    window.location.href = "/Device_Data?Site_id=" + Site_id;
+                                    
+                                });
+                                document.getElementById("SettingId").addEventListener("click", function() {
+                                    // Get the site ID from the button's id attribute
+                                            var Site_id = siteId;
+                                        // Navigate to another page with the site ID as a parameter
+                                            window.location.href = "/Setting_Data?Site_id=" + Site_id;
+                                });
+
+
+                            };
+
+                            
+                        });
+                    } else {
+                        // Alert for an error
+                        alert("Response not valid");
+                    }
+                },
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            
+        }
+        
+         function Modal_ShowSiteDetails(Site_id){ 
+            //alert(Site_id);
+            // Define the URL for the AJAX request
+            var url = "{% url 'ShowSiteDetails' %}";
+            // Make an AJAX POST request
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {Site_id: Site_id},
+                success: function (response) {
+                    console.log(response)
+                    if (!response["valid"]) {
+
+                        $.each(response, function (index, data) {
+                            let Name=  data[0]; 
+                            let Serial=  data[2]; 
+                            let MobileNo=  data[3]; 
+                            let Address=  data[1];
+
+                        $("#fullScreenModalTest").modal('show');
+
+                        document.getElementById("SiteName").innerHTML=Name
+                        document.getElementById("imeiid").innerHTML=Serial
+                        document.getElementById("mobileid").innerHTML=MobileNo
+                        document.getElementById("Addressid").innerHTML=Address
+
+           
+                         });//  Object.entries(data).map(entry => {
+                     //}//.then(data => {
+                    } else {
+                        // Alert for an error
+                        alert("Response not valid");
+                    }
+                },
+            })   
+             .catch(error => {
+                console.error('Error:', error);
+             });
+             var url = "{% url 'GetwaterDetails' %}";
+             // Make an AJAX POST request
+            $.ajax({
+                 type: 'POST',
+                 url: url,
+                 data: {Site_id: Site_id},
+                 success: function (response) {
+                     console.log(response)
+                     if (!response["valid"]) {
+ 
+                         $.each(response, function (index, data) {
+                            let Chlorine=  data[0]; 
+                            let WaterPressure=  data[1]; 
+                            let Battery_Percentage=  data[2];
+                            let Status=  data[3]; 
+
+                        $("#fullScreenModalTest").modal('show');
+
+                        document.getElementById("DStatus").innerHTML=`<span style="color: red;">${Status}</span>`;
+                        document.getElementById("chlorineid").innerHTML=Chlorine
+                        document.getElementById("waterPressureid").innerHTML=WaterPressure
+                        document.getElementById("bettery_Perid").innerHTML=Battery_Percentage
+
+                        });
+                    } else {
+                        // Alert for an error
+                        alert("Response not valid");
+                    }
+                },
+            })
+             .catch(error => {
+                console.error('Error:', error);
+             });
+
+
+            var result;
+            var hr ;
+        // Alert for debugging purposes
+        //alert(12345567);
+            const now = new Date();
+            const day = now.getDay(); // returns a number representing the day of the week, starting with 0 for Sunday
+            const hours = now.getHours();
+            hr = hours
+            console.log(hours)
+        // Define the URL for the AJAX request
+            var url = "{% url 'Get_ChlorineChart' %}";
+    
+        // Extract state and district IDs
+        //var Stateid = str;
+        //var Districtid = str1;
+    
+            // Make an AJAX POST request
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data:{Site_id: Site_id},
+                success: function (response) {
+                
+                    if (!response["valid"]) {
+                        // Extract data fields
+                    //console.log(response)
+                        result  = response
+                        console.log(result[0][1])
+                        getChlorineChart(hr,result);
+                        
+                    
+    
+                    // Loop through the response data
+
+                    } else {
+                    // Alert for an error
+                        alert("response not valid");
+                    }
+                },
+            })
+
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            getPressurechart(hr,Site_id);
+
+            
+            var url = "{% url 'Get_ChlorineChart' %}";
+                   // alert(1234567);
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: { Site_id: Site_id },
+                        success: function (response) {
+                            //console.log("***")
+                            //console.log(response)
+                            data = response[0]
+                            //console.log(data)
+                            console.log(data[0])
+                            console.log(data[1])
+                            if (!response["valid"]) {
+                                    
+                                Chlorine = data[0];
+                                    //var datetime =data[1];
+                                var color;
+                                console.log(Chlorine)
+            
+                            // Set color based on the Chlorine value
+                                var ctx = document.getElementById("myGaugeChart").getContext("2d");
+                                var chart = new Chart(ctx, {
+                                    type: 'gauge',
+                                    data: { 
+                                        labels: ['Low Chlorine', 'Excellent', 'Excess Chlorine'],
+                                        datasets: [{
+                                            value: Chlorine,
+                                            minValue: 0,
+                                            data: [0.19, 0.29, 0.50], // Adjust the data range
+                                            backgroundColor: ['yellow', 'green', 'red'],
+                                        }]
+                                    },
+            
+                                    options: {
+                                        responsive: true,
+                                        needle: {
+                                            radiusPercentage: 2,
+                                            widthPercentage: 3.2,
+                                            lengthPercentage: 50,
+                                            color: 'rgba(0, 0, 0, 1)'
+                                        },
+                                        valueLabel: {
+            
+                                            display: true,
+                                             formatter: (value) => {
+                                                return value;
+                                            },
+            
+                                            color: 'rgba(255, 255, 255, 1)',
+                                            backgroundColor: 'rgba(0, 0, 0, 1)',
+                                            borderRadius: 5,
+            
+                                            padding: {
+                                                top: 10,
+                                                bottom: 10
+                                            }
+                                        },
+                                                
+                                        labels: {
+                                            generateLabels: function (chart) {
+                                                return chart.data.data.map(function (value, index) {
+                                                    var color = chart.data.datasets[0].backgroundColor[index];
+                                                    return {
+                                                        text: chart.data.labels[index],
+                                                        display: true,
+                                                        //fillStyle: color
+                                                    };
+                                                });
+                                            }
+                                        }
+                                    }
+                                            
+                                });
+                                        
+                                if (Chlorine <= 0.19){
+                                    document.getElementById("chlorine_button").style.background='#FFFF00';
+                                    document.getElementById("chlorine_range").innerHTML = "Low Chlorine";
+                                    
+                                    //console.log("inside if")        
+                                } else if (Chlorine>0.19 && Chlorine<=0.29){
+                                    document.getElementById("chlorine_button").style.background='#00FF00';
+                                    document.getElementById("chlorine_range").innerHTML = "Excellent";
+                                    
+                                }else{
+                                    document.getElementById("chlorine_button").style.background='#ff0000';
+                                    document.getElementById("chlorine_range").innerHTML = "Excess Chlorine";
+                                    
+                                        //console.log(Chlorine)
+                                }
+            
+                                  
+                            } else {
+            
+                        // Alert for an error
+                                alert("Error");
+                            }
+                        }
+                    });
+            
+                }
+   
+        function getChlorineChart(hr,result) {
+                
+            var curdate  = new Date(); 
+            var dataPoints = [];
+            
+            var stockChart = new CanvasJS.StockChart("ChlorineChartContainer",{
+                theme: "light2", //"light1", "dark1", "dark2"
+                //title:{
+                //  text:"Chlorine Data"
+                //},
+                rangeSelector: {  // Adding the range selector with custom options
+                    
+                    buttons: [  // Defining custom range options
+                        {
+                        label: "Today", // Add a custom button for today
+                        range: hr, // Set the range to 1 day
+                        rangeType: "hour"
+                        },
+                        
+                        {
+                            label: "Week",
+                            range: 7,
+                            rangeType: "day"
+                        },
+                        {
+                            label: "Month",
+                            range: 1,  
+                            rangeType: "month"
+                        },
+                        {
+                            label: "Year",
+                            range: 365,  
+                            rangeType: "day"
+                        },
+                        {
+                            label: "All",
+                            range: null, // Set the range to null to include all data
+                            rangeType: "all" // You can use a custom range type "all"
+                        }
+                        
+                    ],
+                    inputFields: {
+                        enabled:false,
+                    }
+    
+                },
+                charts: [{
+                    axisX: {
+                        crosshair: {
+                            enabled: true,
+                            snapToDataPoint: true,
+                            valueFormatString: "HH:mm:ss"
+                        }
+                    },
+                    axisY: {
+                        prefix: "",
+                        crosshair: {
+                            enabled: true,
+                            snapToDataPoint: true,
+                            valueFormatString: "##.##",
+                      
+                        },
+    
+                    },
+                    toolTip: {
+                       shared: true
+                    },
+                    rangeChanged: function(e) { // Remove the date selection option
+                        e.chart.navigator.toggleExpand()
+                    },
+                   data: [{
+                        type: "spline",
+                        name: "Chlorine",
+                        yValueFormatString: "00.00",
+                        dataPoints : dataPoints
+                    }]
+                }],
+                navigator: {
+                    enabled:true
+                }
+                
+               
+            });
+                //console.log("%%%%%%%%%%%%%%")
+                console.log(result)
+                //console.log("@@@@@@@@@@@@@@@@@@@@@@@@")
+                //console.log(result[0][1])
+                //let str = result[0][1]
+               // str = str.replace('T',' ')
+                //console.log(str)
+    
+                //console.log(typeof result[0][1])
+            for(var i = 0; i < result.length; i++){
+                let str = result[i][1]
+                str = str.replace('T',' ')
+                console.log(str)
+                console.log(result[i][0])
+                dataPoints.push({x: new Date(str), y: parseFloat(result[i][0])});
+            }
+            var minDate = dataPoints[0].x;
+            var maxDate = dataPoints[dataPoints.length - 1].x;
+    
+                   
+            stockChart.render();
+    
+        }// end function Modal_ShowSiteDetails/
+
+
+
+        function getPressurechart(hr,Site_id){
+           // alert(Site_id);
+            console.log(Site_id);
+            console.log("edtrftgyhujik")
+            var url1 = "{% url 'Get_PressureChart' %}";
+            $.ajax({
+                type: 'POST',
+                url: url1,
+                data: {Site_id:Site_id},
+                success: function (response) {
+                    
+                    if (!response["valid"]) {
+                            // Extract data fields
+                        //console.log(response)
+                        data = response
+                        var dataPoints = [];
+            
+                        var stockChart = new CanvasJS.StockChart("PressureChartContainer",{
+                        theme: "light2", //"light1", "dark1", "dark2"
+                        title:{
+                        text:"Pressue Data"
+                        },
+                        rangeSelector: {  // Adding the range selector with custom options
+                    
+                        buttons: [  // Defining custom range options
+                        {
+                        label: "Today", // Add a custom button for today
+                        range: hr, // Set the range to 1 day
+                        rangeType: "hour"
+                        },
+                        
+                        {
+                            label: "Week",
+                            range: 7,
+                            rangeType: "day"
+                        },
+                        {
+                            label: "Month",
+                            range: 1,  
+                            rangeType: "month"
+                        },
+                        {
+                            label: "Year",
+                            range: 365,  
+                            rangeType: "day"
+                        },
+                        {
+                            label: "All",
+                            range: null, // Set the range to null to include all data
+                            rangeType: "all" // You can use a custom range type "all"
+                        }
+                        
+                        ],
+                        inputFields: {
+                        enabled:false,
+                        }
+    
+                    
+    
+                        },
+                    charts: [{
+                  axisX: {
+                    crosshair: {
+                      enabled: true,
+                      snapToDataPoint: true,
+                      valueFormatString: "HH:mm:ss"
+                    }
+                  },
+                  axisY: {
+                    prefix: "",
+                    crosshair: {
+                      enabled: true,
+                      snapToDataPoint: true,
+                      valueFormatString: "##.##",
+                      
+                    },
+    
+                  },
+                  toolTip: {
+                    shared: true
+                  },
+                  rangeChanged: function(e) { // Remove the date selection option
+                    e.chart.navigator.toggleExpand()
+                  },
+                  data: [{
+                    type: "line",
+                    name: "Pressure",
+                    yValueFormatString: "00.00",
+                    dataPoints : dataPoints
+                  }]
+                }],
+                navigator: {
+                    enabled:true
+                }
+                
+               
+              });
+                
+                for(var i = 0; i < data.length; i++){
+                    let str = data[i][1]
+                    str = str.replace('T',' ')
+                    console.log(str)
+                    console.log(data[i][0])
+                  dataPoints.push({x: new Date(str), y: parseFloat(data[i][0])});
+                }
+                var minDate = dataPoints[0].x;
+                var maxDate = dataPoints[dataPoints.length - 1].x;
+    
+                   
+                stockChart.render();
+    
+    
+                        // Loop through the response data
+    
+                } else {
+                        // Alert for an error
+                        alert("response not valid");
+                    }
+                },
+                
+                
+    
+            })
+            
+            
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            console.log("@#$%")
+        }
+
+
+        function initMap(str,str1) {
+            console.log(str, str1);
+            // Define the URL for the AJAX request
+            var url = "{% url 'Get_GoogalMap' %}";
+        
+            // Make an AJAX POST request
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { Stateid: str, Districtid: str1, device_no: 'ALL', orgid: 1 },
+                success: function (response) {
+                    if(response.length === 0 ){
+                        var mapOptions1 = {
+                            zoom: 9,
+                            center: new google.maps.LatLng({ lat: 21.7679, lng:  78.8718}),
+                            mapTypeId: google.maps.MapTypeId.TERRAIN
+                        };
+                        var map1 = new google.maps.Map(document.getElementById('map-canvas1'), mapOptions1);
+                        toastr.error('No Site found on ' + $("#Districtid option:selected").text(), 'Alert'); //info, success, warning, error
+                        toastr.options.fadeOut = 3500; toastr.options.onclick = function () {
+                            alert('You can perform some custom action after a toast goes away')
+                        };
+                    
+                
+                    }
+                    else{
+                        if (!response["valid"]) {
+                            console.log(response);
+                            
+            
+                            $.each(response, function (index, data) {
+                                let Name = data[1];
+                                let Address = data[2];
+                                let Lat = parseFloat(data[3]);
+                                let Lon = parseFloat(data[4]);
+                                let serial = data[5];
+                                let Chlorine = data[6];
+                                let Battery_voltage = data[7];
+                                let UPTIME = data[9];
+                                
+            
+                                if (!isNaN(Lat) && !isNaN(Lon)) {
+                                    console.log(Lat,Lon);
+                                    var center = { lat: Lat, lng: Lon };
+                                    var map = new google.maps.Map(document.getElementById('map-canvas1'), {
+                                        zoom: 8,
+                                        center: center
+                                    });
+            
+                                    var infowindow = new google.maps.InfoWindow({});
+            
+                                    var marker = new google.maps.Marker({
+                                        position: center,
+                                        map: map,
+                                        title: Address
+                                    });
+            
+                                    google.maps.event.addListener(marker, 'click', function () {
+                                        var contentString1 = '<h6><b>Site Name  : </b>' + Name + '</h6></br> <h6><b>Device Number : </b>' + serial + '</h6> </br> <h6><b>Location : </b> ' + Address + '</h6></br><hr><h6><b>Chlorine : </b> ' + Chlorine + '</h6></br><h6><b>Battery Voltage : </b> ' + Battery_voltage + '</h6></br><h6><b>UPTIME:</b> ' + UPTIME;
+                                        infowindow.setContent(contentString1);
+                                        infowindow.open(map, marker);
+                                    });
+                                } else {
+                                    console.error("Invalid latitude or longitude values.");
+                                }
+                            });
+                        } else {
+                            // Alert for an error
+                            alert("Error");
+                        }
+                    }
+                    
+                }
+            });
+            
+        }    
+
+
+        function Gmap1(str,str1) {
+            var url = "{% url 'Get_GoogalMap' %}";
+
+            // debugger;
+        
+             jQuery.ajax({
+                 type: "POST",
+                 url: url,
+                 data: { Stateid: str, Districtid: str1, device_no: 'ALL', orgid: 1 },
+                 success: function (response) {
+ 
+                     if (response.length > 0) {
+ 
+                         data = response;
+                         initialize1();
+                     }
+                     else {
+                         var mapOptions1 = {
+                             zoom: 9,
+                             center: new google.maps.LatLng({ lat: Lat, lng: Lon }),
+                             mapTypeId: google.maps.MapTypeId.TERRAIN
+                         };
+                         var map1 = new google.maps.Map(document.getElementById('map-canvas1'), mapOptions1);
+                         toastr.error('No NG consumer found on ' + $("#district option:selected").text(), 'Alert'); //info, success, warning, error
+                         toastr.options.fadeOut = 3500; toastr.options.onclick = function () {
+                             alert('You can perform some custom action after a toast goes away')
+                         };
+                     }
+                 },
+                 error: function (data) {
+                     // alert("fail");
+                 }
+             });
+ 
+         }
+ 
+         var xmlDoc = '';
+         //  google.maps.visualRefresh = true;
+         function initialize1() {
+             //Gmap();
+             // debugger;
+             var mapOptions1 = {
+                 zoom: 9,
+                 center: new google.maps.LatLng({ lat: Lat, lng: Lon }),
+                 mapTypeId: google.maps.MapTypeId.TERRAIN
+             };
+             var map1 = new google.maps.Map(document.getElementById('map-canvas1'), mapOptions1);
+             var marker1 = [];
+             var smarker1 = [];
+             var infowindow1 = [];
+             var sinfowindow1 = [];
+             var j = 0;
+             var l = 1;
+             var k = 0;
+             var contentString1 = "";
+ 
+             var markerColor1;
+ 
+             for (var i = 0; i < data.length; i++) {
+            //$.each(response, function (index, data) {
+ 
+                 var name = '';
+                 var type1 = ''
+                 var m = 1;
+                 var pinColor = ['FABC02', 'f18251', '6699FF', '1da212', 'FEFE33', '007FFF', '7ce9f0', ];
+ 
+                 let Name = data[1];
+                 let Address = data[2];
+                let Lat = parseFloat(data[3]);
+                let Lon = parseFloat(data[4]);
+                let serial = data[5];
+                let Chlorine = data[6];
+                let Battery_voltage = data[7];
+                let UPTIME = data[9];
+                 var image = '';
+                 var fontsize = 10;
+ //                var uid = '<%:Session["id"]%>';
+ //                if (uid == 'genesis') {
+ //                    if (xmlDoc[i].snr >= 0) {
+ //                        if (xmlDoc[i].rssi >= -100) {
+ //                            m = 3;
+ //                        }
+ //                        else {
+ //                            m = 0;
+ //                        }
+ //                    }
+ //                    else {
+ //                        m = 0;
+ //                    }
+ //                }
+                 //contentString1 = '<b>Consumer :</b> ' + name + '</br> <b>BP No :</b> ' + bpno + '</br> <b>Location :</b> ' + Location + '</br> <b>Meter No :</b> ' + meterno + '</br> <b>Commission DateTime :</b> ' + ngdate + '</br> <b>UP Time :</b> ' + uptime;
+                 var contentString1 = '<h6><b>Site Name  : </b>' + Name + '</h6></br> <h6><b>Device Number : </b>' + serial + '</h6> </br> <h6><b>Location : </b> ' + Address + '</h6></br><hr><h6><b>Chlorine : </b> ' + Chlorine + '</h6></br><h6><b>Battery Voltage : </b> ' + Battery_voltage + '</h6></br><h6><b>UPTIME:</b> ' + UPTIME;
+                 infowindow1[i] = new google.maps.InfoWindow({
+ 
+                     content: contentString1
+                 });
+ 
+                 marker1[i] = new google.maps.Marker({
+                     position: new google.maps.LatLng(lat, lon),
+                     draggable: false,
+                     clickable: true,
+                     // animation: google.maps.Animation.DROP,
+                     icon: { url: IconImage(0.8, 0, pinColor[m], fontsize, '_', bpno.substr(bpno.length - 4)) },
+                     title: name,
+                     map: map1,
+                     info: contentString1
+ 
+                 });
+                 fontsize = 10;
+                 createInfo1(i);
+            }
+             function IconImage(a, b, c, d, e, f) {
+                 var URL = "https://chart.apis.google.com/chart?chst=d_map_spin&chld=" + a + "| " + b + "|" + c + "|" + d + "|" + e + "|" + f;
+                 // chld=a|b|c|d|e|f
+                 // a: Marker scale (1 = 100%)
+                 // b: Rotation (degrees)
+                 // c: Font colour (Hex)
+                 // d: Font size (pixels)
+                 // e: Font style (_ = normal, b = bold)
+                 // f: The text to display
+                 return URL;
+             }
+             function createInfo1(y) {
+                 marker1[y].addListener('click', function () {
+                     infowindow1[y].open(map1, marker1[y]);
+                 });
+             }
+         }
+
+        //Test Modals  Command Setting and Device data
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+          })
+
+    </script>
+
+    <script>
+
+
+// set cuttent year in footer comment
+
+        // set Current date to  Todate in page  
+    document.addEventListener('DOMContentLoaded', function () {
+        var toDateInput = document.getElementById('currentYear');
+
+        // Create a JavaScript Date object for the current date
+        var currentDate = new Date();
+
+        // Format the date to 'yyyy-MM-dd' (the format expected by the date input)
+        var year = currentDate.getFullYear();
+       // $("#CurrantD").val(toDateInput.value);
+        document.getElementById("currentYear").innerHTML ="Copyright ©"+ year +" MEGA WORKER.";
+
+
+    });
+
+
+    </script>
+
+
+{% comment %} <script type="text/javascript">
+window.onload = function () {
+  
+}
+</script> {% endcomment %}
+</body>
+
+</html>

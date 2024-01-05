@@ -1,0 +1,87 @@
+<html>
+    <body>
+        <style>
+            {% comment %} @page {
+                size: A4 portrait;
+                
+                 @frame content_frame {
+                    left: 50pt;
+                    width: 500pt;
+                    right:50pt;
+                    top: 50pt;
+                    height: 730pt;
+                    -pdf-frame-border: 1;    /* for debugging the layout */
+                } 
+            } {% endcomment %}
+            
+		
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+    
+            th, td {
+                padding: 10px;
+                text-align: center;
+                font-size: large;
+            }
+    
+            th {
+                {% comment %} background-color: #f2f2f2; {% endcomment %}
+                background-color: #e8e8e8;
+                font-weight: bold;
+                width: 30%; /* Set a fixed width for each heading cell */
+            }
+            .row{
+                font-size: large;
+            }
+           
+		
+        </style>
+        <div class="row" style="padding:3px 20px;">
+            <div class="text-muted d-flex justify-content-between mb-2">
+                <span><div class="badge bg-primary"></div>Site Name :</span>
+                <span><strong id="SiteName" >{{name}}</strong></span>
+            </div><div class="text-muted d-flex justify-content-between mb-2">
+                <span><div class="badge bg-primary"></div>Device Id :</span>
+                <span><strong id="Imeino" >{{serial}}</strong></span>
+            </div><div class="text-muted d-flex justify-content-between mb-2">
+                <span><div class="badge bg-primary"></div>Address :</span>
+                <span><strong id="Addressid" >{{address}}</strong></span>
+            </div><div class="text-muted d-flex justify-content-between mb-2">
+                <span><div class="badge bg-primary"></div>Installation Date :</span>
+                <span><strong id="InstallationD" >{{install_date}}</strong></span>
+            </div>
+        </div>
+        <div class="col-md-12" id="mypdfdata_Setting">
+            <table class="info-table" id="dataTable_Setting">
+
+                  
+                <thead>
+                    <tr>
+                        <th>Sr No.</th>
+                        <th>Chlorine Data Fequency </th>
+                        <th>Pressure Data Fequency</th>
+                        <th>Pressure Max Limit</th>
+                        <th>Pressure Min Limit</th>
+                        <th>Pressure Unit</th>
+                        <th>Date Time</th>
+                    </tr>
+                    {% for thing in result %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{thing.3}}</td>
+                        <td>{{thing.4}}</td>
+                        <td>{{thing.5}}</td>
+                        <td>{{thing.6}}</td>
+                        <td>{{thing.14}}</td>
+                        <td>{{thing.12}}</td>
+                    </tr>
+                   
+                    {% endfor %}
+                </thead> 
+            </table>
+        </div>
+
+</body>
+</html>

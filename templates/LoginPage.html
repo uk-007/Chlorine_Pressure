@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Login From</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href='/static/css/style.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="myCard">
+            <div class="row">
+                <div class="col-md-5">
+
+                    <div class="myLeftCtn">
+                        <div class="col-12 text-center">
+                            <div class="mt-5 pt-5" style="height: 100px;">
+                                {% load static %}
+                                <img src="{% static '/images/icon1.png' %}" class="droap">
+                                <div class="blr">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <br><br>
+                            <br>
+                            <h4 style="color: #ffffff; text-shadow: 1px 1px 2px rgba(245, 245, 247, 0.6);">CITY WATER SYSTEM</h4>
+                            <br><br>
+                            <br>
+                            <small style="color: #ffffff;">POWERED BY</small><br>
+                            {% load static %}
+                            <img alt="logo" class="img-fluid" src="static/images/logo1.png" style="height: 40px;">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    
+                    {% csrf_token %}
+                    <div class="myRightCtn">
+                        <!--<header>Hello World</header>-->
+
+                        <form class="myform text-center" method="POST" action="/"  >
+                            {% csrf_token %}
+                            
+                            <header> Login</header>
+                            <div class="form-group">
+                                <i class='fas fa-user-alt'></i>
+                                
+                                <input class="myInput" type="text" placeholder="LoginId" id="Email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <i class="fas fa-envelope-open"></i>
+                                <input class="myInput" type="text" placeholder="Password" id="password" name="password" required>
+                            </div>
+
+                            <div class="form-group ">
+                                <i class='fas fa-sync-alt'></i>
+                                <input class="myInput col-md-5" id="cpt" style="border:0px;"  type="text" name="cpt"  value="{{captcha}}" readonly >
+                                <input class="myInput col-md-5" type="text" placeholder="Captcha" id="cptch" name="cptch" autocomplete="cptch"  required>
+                            </div>
+
+                            
+                            <input type="submit" class="butt" value="Login">
+                            <style>
+                                /* Add a style for the label */
+                                label {
+                                    color: blue; /* Set the default color */
+                                    cursor: pointer;
+                                }
+                        
+                                /* Change the color when the label is hovered */
+                                label:hover {
+                                    color: purple; /* Set the color for hover */
+                                }
+                            </style>
+                            <div style="color: #234689;">
+                                <label for="redirectLink" onclick="window.location.href='ForgotPassword';" style="cursor: pointer;">Forget Password?</label>
+                                              
+                            </div>
+
+
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    {% comment %} <script>
+        $('#cpt').bind("cut copy paste", function(e){
+            e.preventDefault();
+        })
+    </script> {% endcomment %}
+    {% comment %} <script>
+        function captchaValidation(){
+            let entered = document.getElementById("cpt");
+            let required = document.getElementById("text");
+            if(entered != required){
+                alert("Worng captcha Entered");
+                location.reload();
+
+            }
+           
+        }
+    </script> {% endcomment %}
+    <script>
+        jQuery('#cpt').bind("copy",function(e) {
+            e.preventDefault();
+        });
+        jQuery('#cptch').bind("paste",function(e) {
+            e.preventDefault();
+        });
+        var a = "{{message}}";
+        var b = "{{fmsg}}"
+        if (a == "wrong captcha entered"){
+            alert("wrong captcha entered")
+        }else if(a == "Incorrect loginid"){
+            alert("Loginid does not exist")
+        }else if(a == "Incorrect password"){
+            alert("loginid and password does not match")
+        }else if(b == "pswrd changed"){
+            alert(a);
+        }
+        //console.log(a);
+    </script>
+</body>
+
+
+</html>
